@@ -1,0 +1,39 @@
+C51 COMPILER V9.60.0.0   LED8                                                              11/28/2021 08:37:00 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LED8
+OBJECT MODULE PLACED IN .\Objects\led8.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE led8.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\led8
+                    -.lst) TABS(2) OBJECT(.\Objects\led8.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          void mydelay(unsigned int time){
+   3   1        unsigned int i,j;
+   4   1        for(i=0;i<time;i++){
+   5   2          for(j=0;j<1200;j++);
+   6   2        }
+   7   1      }
+   8          void main (void){
+   9   1        while(1){
+  10   2          P2= 0x00;
+  11   2          mydelay(200);
+  12   2          P2= 0xFF;
+  13   2          mydelay(200);
+  14   2        }
+  15   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     49    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

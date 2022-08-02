@@ -1,0 +1,92 @@
+C51 COMPILER V9.60.0.0   ASCII                                                             12/22/2021 00:00:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ASCII
+OBJECT MODULE PLACED IN .\Objects\ascii.obj
+COMPILER INVOKED BY: D:\KEIL\C51\BIN\C51.EXE ascii.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\ascii.
+                    -lst) TABS(2) OBJECT(.\Objects\ascii.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          sbit rs=P2^0;
+   4          sbit rw=P2^1;
+   5          sbit en=P2^2;
+   6          void delay(unsigned int m);
+   7          void Lcd_command(unsigned char cmd);
+   8          void start_lcd(void);
+   9          void lcd_work(unsigned int d);
+  10          
+  11          void main(void)
+  12          {
+  13   1      unsigned int i,j;
+  14   1      j=0x41;
+  15   1      start_lcd();
+  16   1      delay(15);
+  17   1      for(i=0;i<26;i++)
+  18   1      {
+  19   2      start_lcd();
+  20   2      delay(15);
+  21   2      P1=j;
+  22   2      lcd_work(j);
+  23   2      delay(200);
+  24   2      j++;
+  25   2      }
+  26   1      }
+  27          
+  28          void delay(unsigned int m)
+  29          {
+  30   1      unsigned int i,j;
+  31   1      for(i=0;i<m;i++)
+  32   1      {
+  33   2      for(j=0;j<1200;j++)
+  34   2      {
+  35   3      }
+  36   2      }
+  37   1      }
+  38          void Lcd_command(unsigned char cmd)
+  39          {
+  40   1      P1=cmd;
+  41   1      rs=0;
+  42   1      rw=0;
+  43   1      en=1;
+  44   1      delay(15);
+  45   1      en=0;
+  46   1        }
+  47          void start_lcd(void)
+  48          {
+  49   1      Lcd_command(0x38);
+  50   1      delay(15);
+  51   1      Lcd_command(0x01);
+  52   1      delay(15);
+  53   1      Lcd_command(0x0C);
+  54   1      delay(15);
+C51 COMPILER V9.60.0.0   ASCII                                                             12/22/2021 00:00:04 PAGE 2   
+
+  55   1      Lcd_command(0x84);
+  56   1      delay(15);
+  57   1      }
+  58          void lcd_work(unsigned int d)
+  59          {
+  60   1      P1=d;
+  61   1      rs=1;
+  62   1      rw=0;
+  63   1      en=1;
+  64   1      delay(15);
+  65   1      en=0;
+  66   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    160    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

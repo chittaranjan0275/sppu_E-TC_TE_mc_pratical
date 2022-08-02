@@ -1,0 +1,129 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/22/2021  00:30:43  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\KEIL\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\non_overlapping.obj TO .\Objects\non overlapping PRINT (.\List
+>> ings\non overlapping.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\non_overlapping.obj (NON_OVERLAPPING)
+  D:\KEIL\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  D:\KEIL\C51\LIB\C51S.LIB (?C?CSTOPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\non overlapping (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0006H     UNIT         _DATA_GROUP_
+            IDATA   000EH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     004FH     UNIT         ?C?LIB_CODE
+            CODE    084FH     003EH     UNIT         ?PR?MAIN?NON_OVERLAPPING
+            CODE    088DH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\non overlapping (?C_STARTUP)
+
+
+SEGMENT                            DATA_GROUP 
+  +--> CALLED SEGMENT            START    LENGTH
+------------------------------------------------
+?C_C51STARTUP                    -----    -----
+  +--> ?PR?MAIN?NON_OVERLAPPING
+
+?PR?MAIN?NON_OVERLAPPING         0008H    0006H
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\non overlapping (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:088DH         SEGMENT       ?C_C51STARTUP
+  I:000EH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2021  00:30:43  PAGE 2
+
+
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0890H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:088DH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:088DH         LINE#         133
+  C:088FH         LINE#         134
+  C:0890H         LINE#         135
+  C:0891H         LINE#         136
+  C:0893H         LINE#         185
+  C:0896H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        NON_OVERLAPPING
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:084FH         PUBLIC        main
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        ptr1
+  D:000BH         SYMBOL        ptr2
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:084FH         LINE#         2
+  C:084FH         LINE#         3
+  C:0858H         LINE#         4
+  C:0861H         LINE#         6
+  C:086DH         LINE#         7
+  C:0889H         LINE#         8
+  C:088CH         LINE#         9
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        NON_OVERLAPPING
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0800H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+
+  -------         MODULE        ?C?CSTOPTR
+  C:082DH         PUBLIC        ?C?CSTOPTR
+  -------         ENDMOD        ?C?CSTOPTR
+
+******************************************************************************
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/22/2021  00:30:43  PAGE 3
+
+
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004DH BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=15.0 xdata=0 code=156
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

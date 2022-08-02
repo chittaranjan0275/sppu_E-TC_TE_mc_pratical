@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\hex down counter.obj" 
+TO ".\Objects\hex down counter" 
+PRINT(".\Listings\hex down counter.m51") RAMSIZE(256) 

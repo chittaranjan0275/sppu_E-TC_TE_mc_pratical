@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\led_counter.obj" 
+TO ".\Objects\led_counter" 
+PRINT(".\Listings\led_counter.m51") RAMSIZE(256) 

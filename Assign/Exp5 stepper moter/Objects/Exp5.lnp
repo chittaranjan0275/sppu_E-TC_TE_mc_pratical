@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\srevo.obj" 
+TO ".\Objects\Exp5" 
+PRINT(".\Listings\Exp5.m51") RAMSIZE(256) 

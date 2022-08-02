@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\sine_wave.obj" 
+TO ".\Objects\DAC_Sine wave" 
+PRINT(".\Listings\DAC_Sine wave.m51") RAMSIZE(256) 

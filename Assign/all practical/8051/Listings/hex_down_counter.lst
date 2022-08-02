@@ -1,0 +1,90 @@
+C51 COMPILER V9.60.0.0   HEX_DOWN_COUNTER                                                  12/22/2021 10:39:05 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE HEX_DOWN_COUNTER
+OBJECT MODULE PLACED IN .\Objects\hex_down_counter.obj
+COMPILER INVOKED BY: D:\KEIL\C51\BIN\C51.EXE hex_down_counter.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\hex_down_counter.lst) TABS(2) OBJECT(.\Objects\hex_down_counter.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          
+   3          //CODE FOR DISPLAYING ON LCD
+   4          sbit rs=P2^0;
+   5          sbit rw=P2^1;
+   6          sbit e=P2^2;
+   7          void delay(unsigned int);
+   8          void LCD_command(unsigned char cmd);
+   9          void LCD_data(unsigned char dta);
+  10          void init_LCD(void);
+  11          void main(void)
+  12          {
+  13   1      unsigned int i,j;
+  14   1      j=0xFF;
+  15   1      init_LCD();
+  16   1      delay(15);
+  17   1      for (i=0;i<256;i++)
+  18   1      {
+  19   2      init_LCD();
+  20   2      delay(15);
+  21   2      P1=j;
+  22   2      LCD_data(j);
+  23   2      delay(200);
+  24   2      j--;
+  25   2      }
+  26   1      }
+  27          void init_LCD(void)
+  28          {
+  29   1      LCD_command(0x38); // Select 8 bit mode of LCD
+  30   1      delay(15);
+  31   1      LCD_command(0x01); // clear lcd screen
+  32   1      delay(15);
+  33   1      LCD_command(0x0C); // Display on and cursor off
+  34   1      delay(15);
+  35   1      LCD_command(0x84); // select first line and fourth column
+  36   1      delay(15);
+  37   1      }
+  38          void LCD_command(unsigned char cmd)
+  39          {
+  40   1      P1=cmd;
+  41   1      rs=0; //To decide command or data
+  42   1      rw=0;
+  43   1      e=1;
+  44   1      delay(15);
+  45   1      e=0;
+  46   1      }
+  47          void LCD_data(unsigned char dta)
+  48          {
+  49   1      P1=dta;
+  50   1      rs=1;
+  51   1      rw=0;
+  52   1      e=1;
+  53   1      delay(15);
+  54   1      e=0;
+C51 COMPILER V9.60.0.0   HEX_DOWN_COUNTER                                                  12/22/2021 10:39:05 PAGE 2   
+
+  55   1      }
+  56          void delay(unsigned int ms)
+  57          {
+  58   1      unsigned int i,j;
+  59   1      for (i=0;i<ms;i++)
+  60   1      {
+  61   2      for (j=0;j<1275;j++)
+  62   2      {}
+  63   2      }
+  64   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    157    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

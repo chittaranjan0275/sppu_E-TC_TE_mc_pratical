@@ -1,0 +1,47 @@
+C51 COMPILER V9.60.0.0   LED_DELAY                                                         12/22/2021 00:11:05 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LED_DELAY
+OBJECT MODULE PLACED IN .\Objects\led_delay.obj
+COMPILER INVOKED BY: D:\KEIL\C51\BIN\C51.EXE led_delay.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\le
+                    -d_delay.lst) TABS(2) OBJECT(.\Objects\led_delay.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          void msDelay(int c);
+   3          void main()
+   4          {
+   5   1      while(1)
+   6   1      {
+   7   2      P0 = 0x00;
+   8   2      msDelay(100);
+   9   2      P0 = 0xff;
+  10   2      msDelay(100);
+  11   2      }
+  12   1      
+  13   1      }
+  14          void msDelay(int a)
+  15          {
+  16   1      int i,j;
+  17   1      for(i = 0;i < a;i++)
+  18   1      {
+  19   2      for(j = 0;j<1000;j++)
+  20   2      {
+  21   3      }
+  22   2      }
+  23   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     59    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

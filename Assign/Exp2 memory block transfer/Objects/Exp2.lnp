@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\non overlaping.obj" 
+TO ".\Objects\Exp2" 
+PRINT(".\Listings\Exp2.m51") RAMSIZE(256) 

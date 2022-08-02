@@ -1,0 +1,169 @@
+C51 COMPILER V9.60.0.0   ALTERNATE_COUNTER                                                 12/22/2021 10:00:52 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE ALTERNATE_COUNTER
+OBJECT MODULE PLACED IN .\Objects\alternate_counter.obj
+COMPILER INVOKED BY: D:\KEIL\C51\BIN\C51.EXE alternate_counter.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Lis
+                    -tings\alternate_counter.lst) TABS(2) OBJECT(.\Objects\alternate_counter.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define LCD_DATA P1 //LCD data port
+   3          sbit en = P2^3;
+   4          sbit rw = P2^2;
+   5          sbit rs = P2^1;
+   6          //#define en PORTCbits.RC7 // enable signal
+   7          //#define rw PORTCbits.RC6 // read/write signal
+   8          //#define rs PORTCbits.RC5 // register select signal
+   9          void init_LCD(void); //Function to initialise the LCD
+  10          void LCD_command(unsigned char cmd); //Function to pass command to the LCD
+  11          void LCD_data(unsigned char data1); //Function to write character to the LCD
+  12          void LCD_write_string(char *str);//Function to write string to the LCD
+  13          void msdelay (unsigned int time);//Function for delay
+  14          void LCD_data1(int i){
+  15   1        LCD_DATA = i; //Send data on LCD data bus
+  16   1      rs = 1; //RS = 1 since data to LCD
+  17   1      rw = 0; //RW = 0 since writing to LCD
+  18   1      en = 1; //Generate High to low pulse on EN
+  19   1      msdelay(15);
+  20   1      en = 0;
+  21   1      }
+  22          
+  23          //Start of main program
+  24          void main()
+  25          {
+  26   1      char msg1[] = "HEX DOWN Counter";
+  27   1      init_LCD();// Init LCD Module
+  28   1      msdelay(15);
+  29   1      LCD_write_string(msg1);
+  30   1      LCD_command(0xC0); // Goto second line, 0th place of LCD
+  31   1      while(1){
+  32   2        int i;
+  33   2        for(i=15;i>=0;i--){
+  34   3          char c;
+  35   3          switch (i)
+  36   3      {
+  37   4          case 0: 
+  38   4              c = '0';
+  39   4              break;
+  40   4          case 1: 
+  41   4              c = '1';
+  42   4              break;
+  43   4          case 2: 
+  44   4              c = '2';
+  45   4              break;
+  46   4          case 3: 
+  47   4              c = '3';
+  48   4              break;
+  49   4          case 4: 
+  50   4              c = '4';
+  51   4              break;
+  52   4          case 5: 
+  53   4              c = '5';
+  54   4              break;
+C51 COMPILER V9.60.0.0   ALTERNATE_COUNTER                                                 12/22/2021 10:00:52 PAGE 2   
+
+  55   4          case 6: 
+  56   4              c = '6';
+  57   4              break;
+  58   4          case 7: 
+  59   4              c = '7';
+  60   4              break;
+  61   4          case 8: 
+  62   4              c = '8';
+  63   4              break;
+  64   4          case 9: 
+  65   4              c = '9';
+  66   4              break;
+  67   4          case 10: 
+  68   4              c = 'A';
+  69   4              break;
+  70   4          case 11: 
+  71   4              c = 'B';
+  72   4              break;
+  73   4          case 12: 
+  74   4              c = 'C';
+  75   4              break;
+  76   4          case 13: 
+  77   4              c = 'D';
+  78   4              break;
+  79   4          case 14: 
+  80   4              c = 'E';
+  81   4              break;
+  82   4          case 15: 
+  83   4              c = 'F';
+  84   4              break;
+  85   4      }
+  86   3          LCD_data(c);
+  87   3          msdelay(100);
+  88   3          LCD_command(0xC0);
+  89   3      
+  90   3      }}}
+  91          
+  92          void init_LCD(void) // Function to initialise the LCD
+  93          {
+  94   1      LCD_command(0x38); // initialization of 16X2 LCD in 8bit mode
+  95   1      msdelay(15);
+  96   1      LCD_command(0x01); // clear LCD
+  97   1      msdelay(15);
+  98   1      LCD_command(0x06); // clear LCD
+  99   1      msdelay(15);
+ 100   1      LCD_command(0x0C); // cursor off
+ 101   1      msdelay(15);
+ 102   1      LCD_command(0x80); // go to first line and 0th position
+ 103   1      msdelay(15);
+ 104   1      }
+ 105          
+ 106          void LCD_command(unsigned char cmd) //Function to pass command to the LCD
+ 107          {
+ 108   1      LCD_DATA = cmd; //Send data on LCD data bus
+ 109   1      rs = 0; //RS = 0 since command to LCD
+ 110   1      rw = 0; //RW = 0 since writing to LCD
+ 111   1      en = 1; //Generate High to low pulse on EN
+ 112   1      msdelay(15);
+ 113   1      en = 0;
+ 114   1      }
+ 115          
+ 116          void LCD_data(unsigned char data1)//Function to write data to the LCD
+C51 COMPILER V9.60.0.0   ALTERNATE_COUNTER                                                 12/22/2021 10:00:52 PAGE 3   
+
+ 117          {
+ 118   1      LCD_DATA = data1; //Send data on LCD data bus
+ 119   1      rs = 1; //RS = 1 since data to LCD
+ 120   1      rw = 0; //RW = 0 since writing to LCD
+ 121   1      en = 1; //Generate High to low pulse on EN
+ 122   1      msdelay(15);
+ 123   1      en = 0;
+ 124   1      }
+ 125          //Function to write string to LCD
+ 126          void LCD_write_string(char *str)
+ 127          {
+ 128   1      int i = 0;
+ 129   1      while (str[i] != 0)
+ 130   1      {
+ 131   2        LCD_data(str[i]); // sending data on LCD byte by byte
+ 132   2        msdelay(15);
+ 133   2        i++;
+ 134   2        }
+ 135   1      }
+ 136          void msdelay (unsigned int time)//Function for delay
+ 137          {
+ 138   1      unsigned int i, j;
+ 139   1       for (i = 0; i < time; i++)
+ 140   1         for (j = 0; j < 275; j++); //Calibrated for a 1 ms delay in MPLAB
+ 141   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    396    ----
+   CONSTANT SIZE    =     17    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      25
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

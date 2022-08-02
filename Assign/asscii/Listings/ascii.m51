@@ -1,0 +1,174 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    12/23/2021  14:53:17  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\asii.obj TO .\Objects\ascii PRINT (.\Listings\ascii.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\asii.obj (ASII)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\ascii (ASII)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         _DATA_GROUP_
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0042H     UNIT         ?PR?MAIN?ASII
+            CODE    0842H     0027H     UNIT         ?PR?_DELAY?ASII
+            CODE    0869H     001BH     UNIT         ?PR?START_LCD?ASII
+            CODE    0884H     000EH     UNIT         ?PR?_LCD_COMMAND?ASII
+            CODE    0892H     000EH     UNIT         ?PR?_LCD_WORK?ASII
+            CODE    08A0H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\ascii (ASII)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?ASII
+
+?PR?MAIN?ASII                  0008H    0004H
+  +--> ?PR?START_LCD?ASII
+  +--> ?PR?_DELAY?ASII
+  +--> ?PR?_LCD_WORK?ASII
+
+?PR?START_LCD?ASII             -----    -----
+  +--> ?PR?_DELAY?ASII
+  +--> ?PR?_LCD_COMMAND?ASII
+
+?PR?_DELAY?ASII                -----    -----
+  +--> ?PR?_LCD_COMMAND?ASII
+
+?PR?_LCD_WORK?ASII             -----    -----
+  +--> ?PR?_DELAY?ASII
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/23/2021  14:53:17  PAGE 2
+
+
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\ascii (ASII)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ASII
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  C:0849H         PUBLIC        _delay
+  C:0800H         PUBLIC        main
+  C:0869H         PUBLIC        start_lcd
+  B:00A0H.2       PUBLIC        en
+  C:0884H         PUBLIC        _Lcd_command
+  C:0892H         PUBLIC        _lcd_work
+  B:00A0H.0       PUBLIC        rs
+  B:00A0H.1       PUBLIC        rw
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        i
+  D:000AH         SYMBOL        j
+  -------         ENDDO         
+  C:0800H         LINE#         11
+  C:0800H         LINE#         12
+  C:0800H         LINE#         14
+  C:0806H         LINE#         15
+  C:0809H         LINE#         16
+  C:080CH         LINE#         17
+  C:0811H         LINE#         18
+  C:0811H         LINE#         19
+  C:0814H         LINE#         20
+  C:0817H         LINE#         21
+  C:081AH         LINE#         22
+  C:0821H         LINE#         23
+  C:0828H         LINE#         24
+  C:0830H         LINE#         25
+  C:0841H         LINE#         26
+  -------         ENDPROC       MAIN
+  C:0842H         SYMBOL        L?0020
+  C:0845H         SYMBOL        L?0021
+  -------         PROC          L?0019
+  -------         ENDPROC       L?0019
+  C:0842H         SYMBOL        L?0020
+  C:0845H         SYMBOL        L?0021
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        m
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0849H         LINE#         28
+  C:0849H         LINE#         29
+  C:0849H         LINE#         31
+  C:0853H         LINE#         32
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  12/23/2021  14:53:17  PAGE 3
+
+
+  C:0853H         LINE#         33
+  C:0856H         LINE#         34
+  C:0856H         LINE#         35
+  C:0861H         LINE#         36
+  C:0868H         LINE#         37
+  -------         ENDPROC       _DELAY
+  -------         PROC          _LCD_COMMAND
+  D:0007H         SYMBOL        cmd
+  C:0884H         LINE#         38
+  C:0884H         LINE#         39
+  C:0884H         LINE#         40
+  C:0886H         LINE#         41
+  C:0888H         LINE#         42
+  C:088AH         LINE#         43
+  C:088CH         LINE#         44
+  C:088FH         LINE#         45
+  C:0891H         LINE#         46
+  -------         ENDPROC       _LCD_COMMAND
+  -------         PROC          START_LCD
+  C:0869H         LINE#         47
+  C:0869H         LINE#         48
+  C:0869H         LINE#         49
+  C:086BH         LINE#         50
+  C:086EH         LINE#         51
+  C:0870H         LINE#         52
+  C:0873H         LINE#         53
+  C:0875H         LINE#         54
+  C:0878H         LINE#         55
+  C:087DH         LINE#         56
+  -------         ENDPROC       START_LCD
+  -------         PROC          _LCD_WORK
+  D:0006H         SYMBOL        d
+  C:0892H         LINE#         58
+  C:0892H         LINE#         59
+  C:0892H         LINE#         60
+  C:0894H         LINE#         61
+  C:0896H         LINE#         62
+  C:0898H         LINE#         63
+  C:089AH         LINE#         64
+  C:089DH         LINE#         65
+  C:089FH         LINE#         66
+  -------         ENDPROC       _LCD_WORK
+  -------         ENDMOD        ASII
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00A0H BYTE ( 7%) *
+******************************************************************************
+
+Program Size: data=13.0 xdata=0 code=175
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

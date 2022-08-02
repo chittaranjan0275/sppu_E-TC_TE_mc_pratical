@@ -1,0 +1,33 @@
+C51 COMPILER V9.60.0.0   OVERLAPING_                                                       12/23/2021 15:01:21 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE OVERLAPING_
+OBJECT MODULE PLACED IN .\Objects\overlaping-.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE overlaping-.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\overlaping-.lst) TABS(2) OBJECT(.\Objects\overlaping-.obj)
+
+line level    source
+
+   1          #include<reg51.h> 
+   2          void main(void) 
+   3          {
+   4   1        unsigned char *ptr=0x40; 
+   5   1        unsigned char x;
+   6   1        for(x=0;x<4;x++){
+   7   2          *(ptr-2+x)= *(ptr+x);
+   8   2        } 
+   9   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     65    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

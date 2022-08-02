@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\7_segment_display.obj" 
+TO ".\Objects\7 segment display" 
+PRINT(".\Listings\7 segment display.m51") RAMSIZE(256) 

@@ -1,0 +1,44 @@
+C51 COMPILER V9.60.0.0   SAW_TOOTH                                                         12/21/2021 23:32:40 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SAW_TOOTH
+OBJECT MODULE PLACED IN .\Objects\saw_tooth.obj
+COMPILER INVOKED BY: D:\KEIL\C51\BIN\C51.EXE saw_tooth.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\sa
+                    -w_tooth.lst) TABS(2) OBJECT(.\Objects\saw_tooth.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          void sawtooth()
+   3          {
+   4   1      int i;
+   5   1      {
+   6   2      P1 = 0X00;
+   7   2      for(i=0;i<256;i++)
+   8   2      {
+   9   3      P1 = i;
+  10   3      }
+  11   2      
+  12   2      }
+  13   1      }
+  14          void main()
+  15          {
+  16   1      while(1)
+  17   1      {
+  18   2      sawtooth();
+  19   2      }
+  20   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     26    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

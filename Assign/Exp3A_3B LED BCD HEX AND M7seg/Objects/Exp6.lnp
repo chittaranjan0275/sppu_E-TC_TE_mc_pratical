@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\led8BCDcounter.obj" 
+TO ".\Objects\Exp6" 
+PRINT(".\Listings\Exp6.m51") RAMSIZE(256) 

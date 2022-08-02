@@ -1,0 +1,88 @@
+C51 COMPILER V9.60.0.0   HEX_DOWN_COUNTER                                                  12/23/2021 15:19:20 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE HEX_DOWN_COUNTER
+OBJECT MODULE PLACED IN .\Objects\hex down counter.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE hex down counter.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\L
+                    -istings\hex down counter.lst) TABS(2) OBJECT(.\Objects\hex down counter.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          sbit rs=P2^0;
+   3          sbit rw=P2^1;
+   4          sbit e=P2^2;
+   5          void delay(unsigned int);
+   6          void LCD_command(unsigned char cmd);
+   7          void LCD_data(unsigned char dta);
+   8          void init_LCD(void);
+   9          void main(void)
+  10          {
+  11   1      unsigned int i,j;
+  12   1      j=0xFF;
+  13   1      init_LCD();
+  14   1      delay(15);
+  15   1      for (i=0;i<256;i++)
+  16   1      {
+  17   2      init_LCD();
+  18   2      delay(15);
+  19   2      P1=j;
+  20   2      LCD_data(j);
+  21   2      delay(200);
+  22   2      j--;
+  23   2      }
+  24   1      }
+  25          void init_LCD(void)
+  26          {
+  27   1      LCD_command(0x38);
+  28   1      delay(15);
+  29   1      LCD_command(0x01);
+  30   1      delay(15);
+  31   1      LCD_command(0x0C);
+  32   1      delay(15);
+  33   1      LCD_command(0x84);
+  34   1      delay(15);
+  35   1      }
+  36          void LCD_command(unsigned char cmd)
+  37          {
+  38   1      P1=cmd;
+  39   1      rs=0;
+  40   1      rw=0;
+  41   1      e=1;
+  42   1      delay(15);
+  43   1      e=0;
+  44   1      }
+  45          void LCD_data(unsigned char dta)
+  46          {
+  47   1      P1=dta;
+  48   1      rs=1;
+  49   1      rw=0;
+  50   1      e=1;
+  51   1      delay(15);
+  52   1      e=0;
+  53   1      }
+  54          void delay(unsigned int ms)
+C51 COMPILER V9.60.0.0   HEX_DOWN_COUNTER                                                  12/23/2021 15:19:20 PAGE 2   
+
+  55          {
+  56   1      unsigned int i,j;
+  57   1      for (i=0;i<ms;i++)
+  58   1      {
+  59   2      for (j=0;j<1275;j++)
+  60   2      {}
+  61   2      }
+  62   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    157    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

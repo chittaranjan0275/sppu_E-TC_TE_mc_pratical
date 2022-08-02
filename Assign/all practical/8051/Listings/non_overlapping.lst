@@ -1,0 +1,33 @@
+C51 COMPILER V9.60.0.0   NON_OVERLAPPING                                                   12/22/2021 00:30:43 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE NON_OVERLAPPING
+OBJECT MODULE PLACED IN .\Objects\non_overlapping.obj
+COMPILER INVOKED BY: D:\KEIL\C51\BIN\C51.EXE non_overlapping.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\non_overlapping.lst) TABS(2) OBJECT(.\Objects\non_overlapping.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          void main(void){
+   3   1      unsigned char *ptr1 = 0x20;
+   4   1      unsigned char *ptr2 = 0x40;
+   5   1      unsigned char i;
+   6   1      for(i=0;i<10;i++){
+   7   2      *(ptr2+i) = *(ptr1+i);
+   8   2      }
+   9   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     62    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       6
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

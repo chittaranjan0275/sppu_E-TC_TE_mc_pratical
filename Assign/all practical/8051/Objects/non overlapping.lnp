@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\non_overlapping.obj" 
+TO ".\Objects\non overlapping" 
+PRINT(".\Listings\non overlapping.m51") RAMSIZE(256) 
